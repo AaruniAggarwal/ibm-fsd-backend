@@ -17,7 +17,7 @@ public class CallableServiceExample {
 				for(int i=0;i<100;i++)
 				{
 					sum=sum+i;
-					System.out.println(sum);
+					System.out.println(Thread.currentThread().getName()+" "+sum);
 				}
 			} catch (InterruptedException e) {
 				//throw new MyException();
@@ -32,14 +32,15 @@ public class CallableServiceExample {
 		
 
 		Callable<String> c1 = eg.new MyCallable();
-				
+		Callable<String>c2=eg.new MyCallable();		
 
 		
-		ExecutorService e = Executors.newFixedThreadPool(1);
+		ExecutorService e = Executors.newFixedThreadPool(2);
 
 		Future<String> f = e.submit(c1);
+		Future<String> f1 = e.submit(c2);
 
-			while(!f.isDone()) {
+			while(!f.isDone()&& !f1.isDone()) {
 				System.out.println(Thread.currentThread().getName() + " -->Wait");
 				try {
 					Thread.sleep(100);
