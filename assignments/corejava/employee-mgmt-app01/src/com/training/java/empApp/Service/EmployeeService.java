@@ -91,11 +91,12 @@ public class EmployeeService {
 						
 	}
 	
-	public static Employee importEmployee() throws FileNotFoundException {
+	public static void importEmployee(List empList) throws FileNotFoundException {
+		Scanner input=null;
+		try { 
+			Employee e2=null;
 		
-		 Employee e2=null;
-		
-		 Scanner input = new Scanner(new BufferedReader(new InputStreamReader(new FileInputStream
+		  input = new Scanner(new BufferedReader(new InputStreamReader(new FileInputStream
 				 ("C:\\temporary\\input.txt"))));
 		    input.useDelimiter(",|\n");
 
@@ -109,10 +110,18 @@ public class EmployeeService {
 		        String country = input.next();
 
 		        e2 = new Employee(id,name, age, department, desgn, country);
-	
+		        empList.add(e2);
 		    }
-			return e2;
+		    
+//			return e2;
+	
+	}
+	finally {
+		if (input != null) {
+          input.close();
+        }
 	}
 	
 	}
+}
 

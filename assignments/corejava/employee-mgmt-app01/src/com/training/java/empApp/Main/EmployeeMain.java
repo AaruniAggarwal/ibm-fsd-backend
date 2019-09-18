@@ -21,7 +21,7 @@ public static void main(String[] args) throws IOException {
 	while(option!=8) {
 	System.out.println("Menu -");
 	System.out.println("1- Add Employee\n2- View Employee\n3- Update Employee\n4- Delete Employee\n5- View All Employees\n6- Import");
-	System.out.print("7- Exit\nEnter Your Option-");
+	System.out.print("7-Export \n 8- Exit\nEnter Your Option-");
 	Scanner sc = new Scanner(System.in);
 	option = sc.nextInt();
 	
@@ -52,8 +52,8 @@ public static void main(String[] args) throws IOException {
 	}
 	if(option==6) {
 		
-			        Employee e2 = importEmployee();
-			        emplist.add(e2);
+			        importEmployee(emplist);
+			        
 
 
 	}
