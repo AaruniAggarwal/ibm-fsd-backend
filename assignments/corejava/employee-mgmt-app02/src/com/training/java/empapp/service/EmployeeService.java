@@ -1,12 +1,10 @@
-package com.training.java.empapp.service;
-
+package com.training.java.empApp.Service;
 import com.training.java.empApp.dao.*;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
-
+import com.training.java.empApp.Model.Employee;
 import com.training.java.empApp.dao.EmployeeDB;
-import com.training.java.empapp.model.Employee;
 public class EmployeeService implements Callable<Object>{
 	  ArrayList<Employee> emplist=null;
 	  static EmployeeDB empdb=new EmployeeDB();

@@ -1,5 +1,4 @@
-package com.training.java.empapp.main;
-
+package com.training.java.empApp.Main;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -7,8 +6,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.training.java.empapp.model.Employee;
-import com.training.java.empapp.service.EmployeeService;
+import com.training.java.empApp.Model.Employee;
+import com.training.java.empApp.Service.EmployeeService;
 
 public class EmployeeMain extends EmployeeService {
 
