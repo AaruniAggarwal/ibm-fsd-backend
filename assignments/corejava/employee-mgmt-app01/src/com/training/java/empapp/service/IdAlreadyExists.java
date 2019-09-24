@@ -1,4 +1,5 @@
-package com.training.java.empApp.Service;
+package com.training.java.empapp.service;
+
 
 public class IdAlreadyExists extends Exception {
 
