@@ -1,4 +1,4 @@
-package com.training.java.empApp.Model;
+package com.training.java.empapp.model;
 
 public class Employee {
 int empId;

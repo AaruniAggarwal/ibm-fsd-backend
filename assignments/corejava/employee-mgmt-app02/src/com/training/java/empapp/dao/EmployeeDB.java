@@ -167,7 +167,7 @@ System.out.println();
 			System.out.println("Creating statement...");
 			//stmt = conn.createStatement();
 			
-			String query1="update EmployeeData set id=?,name=?,designation=?,department=?,country=? where id=? ";
+			String query1="update EmployeeData set id=?,name=?,age=?,designation=?,department=?,country=? where id=? ";
 			pstmt=conn.prepareStatement(query1);
 			pstmt.setInt(1, e1.getEmpId());
 			pstmt.setString(2,e1.getName());
@@ -216,10 +216,11 @@ System.out.println();
 				// Retrieve by column name
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
+				int age=rs.getInt("age");
 				String designation = rs.getString("designation");
 				String department = rs.getString("department");
 				String country = rs.getString("country");
-				empList.add(new Employee(id,name,age,department,desgn,country));
+				empList.add(new Employee(id,name,age,department,designation,country));
 				// Display values
 				//System.out.format("\t%d | \t%s | \t%s | \t%s | \t%s |\n", id, name, designation, department, country);
 				
