@@ -1,7 +1,0 @@
-Employee [empId=1, name=aaruni, age=22, dept=Oracle, desgn=Assoc, country=India]
-Employee [empId=2, name=ragini, age=19, dept=SAP, desgn=Assoc, country=UK]
-Employee [empId=3, name=himanshu, age=40, dept=FSD, desgn=CEO, country=Europe]
-Employee [empId=4, name="Rahul", age=40, dept="GBC", desgn="CEO", country="India"]
-Employee [empId=5, name="Alok", age=40, dept="GBS", desgn="Manager", country="India"]
-Employee [empId=6, name="Shreya", age=40, dept="GBC", desgn="CEO", country="India"]
-Employee [empId=7, name="Aditi", age=40, dept="GBS", desgn="DeputyManager", country="India"]
