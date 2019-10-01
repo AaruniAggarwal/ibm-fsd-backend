@@ -18,46 +18,48 @@ public class EmployeeMain extends EmployeeService {
 public static void main(String[] args) throws IOException {
 	
 	
+	
 	AbstractApplicationContext context = new AnnotationConfigApplicationContext(EmployeeBeanConfiguration.class);
 	EmployeeService empserv = (EmployeeService)context.getBean("empService");
-
+	
+	int option=0;
    
    //empserv.getList();
-    final ArrayList<Employee>emplist1=(ArrayList<Employee>) empserv.getList();
+   ArrayList<Employee>emplist1=(ArrayList<Employee>) empserv.getList();
    try {
-	    int option = 0;
+	   Scanner sc = new Scanner(System.in);  
 	
 	do {
 	System.out.println("Menu -");
 	System.out.println("1- Add Employee\n2- View Employee\n3- Update Employee\n4- Delete Employee\n5- View All Employees\n6- Import");
 	System.out.print("7- Export \n 8- Exit \n Enter Your Option-");
-	Scanner sc = new Scanner(System.in);
+	
 	option = sc.nextInt();
 	
 	if(option==1) {
-		add(emplist1);
+		empserv.add(emplist1);
 	}
 	
 	if(option==2) {
 		System.out.print("Enter the empId-");
 		int id = sc.nextInt();
-		view(id,emplist1);
+		empserv.view(id,emplist1);
 	}
 	
 	if(option==3) {
 		System.out.print("Enter the empId-");
 		int id = sc.nextInt();
-		update(id,emplist1);
+		empserv.update(id,emplist1);
 	}
 	
 	if(option==4) {
 		System.out.print("Enter the empId-");
 		int id = sc.nextInt();
-		delete(id,emplist1);
+		empserv.delete(id,emplist1);
 	}
 	
 	if(option==5) {
-		viewAll(emplist1);
+		empserv.viewAll(emplist1);
 	}
 	if(option==6) {
 		
@@ -81,7 +83,7 @@ public static void main(String[] args) throws IOException {
 		Future<Boolean> f=e.submit(new Callable<Boolean>() {
 				public Boolean call() throws RuntimeException, IOException {
 					System.out.print("Thread : "+Thread.currentThread().getName());
-					importEmployee(emplist1);
+					empserv.importEmployee(emplist1);
 					return true;
 				}
 			});

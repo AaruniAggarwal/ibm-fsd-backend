@@ -12,8 +12,8 @@ import com.examples.empapp.model.Employee;
 import com.examples.empapp.dao.EmployeeDB;
 public class EmployeeService implements Callable<Object>{
 	  ArrayList<Employee> emplist=null;
-	  static AbstractApplicationContext context = new AnnotationConfigApplicationContext(EmployeeBeanConfiguration.class);
-		public static EmployeeDB empdb = (EmployeeDB)context.getBean("empDao");
+	   AbstractApplicationContext context = new AnnotationConfigApplicationContext(EmployeeBeanConfiguration.class);
+		public  EmployeeDB empdb = (EmployeeDB)context.getBean("empDao");
 	   
 
 	  //static EmployeeDB empdb=new EmployeeDB();
@@ -26,7 +26,7 @@ public class EmployeeService implements Callable<Object>{
 	public List<Employee> getList() {
 		return emplist;
 	}
-	public static void add(ArrayList<Employee> emplist) {
+	public void add(ArrayList<Employee> emplist) {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter empId-");
 		int id=sc.nextInt();
@@ -48,7 +48,7 @@ public class EmployeeService implements Callable<Object>{
 		
 	}
 	
-	public static void view(int id,ArrayList<Employee> emplist) {
+	public void view(int id,ArrayList<Employee> emplist) {
 		System.out.println("The details-");
 		emplist.forEach(e->
 		{if(((Employee) e).getEmpId()==id) {
@@ -58,7 +58,7 @@ public class EmployeeService implements Callable<Object>{
 		
 	}
 	
-	public static void viewAll(ArrayList<Employee> emplist) {
+	public void viewAll(ArrayList<Employee> emplist) {
 		System.out.println("Details of all Employees-");
 		emplist.forEach(e->{
 			System.out.println(e.toString());
@@ -66,37 +66,37 @@ public class EmployeeService implements Callable<Object>{
 		empdb.displayAll();
 	}
 	
-	public static void delete(int id, ArrayList<Employee> emplist) {
+	public void delete(int id, ArrayList<Employee> emplist) {
 		
 		Iterator<Employee> itr1 = emplist.iterator();
 
-        while (itr1.hasNext()) {
-            Employee e  = itr1.next();
-            if(e.getEmpId()==id) {
-            	itr1.remove();
-            }
+      while (itr1.hasNext()) {
+          Employee e  = itr1.next();
+          if(e.getEmpId()==id) {
+          	itr1.remove();
           }
+        }
 
 		System.out.println("The required employee details have been deleted");
 		empdb.delete(id);			
 	}
 	
-	public static void update(int id, ArrayList<Employee> emplist) {
+	public void update(int id, ArrayList<Employee> emplist) {
 		
 		Iterator<Employee> itr = emplist.iterator();
 
-        int id1 = 0;
-        while (itr.hasNext()) {
-        	
-            Employee e  = itr.next();
-            if(e.getEmpId()==id) {
-                id1 = id;
-            	itr.remove();
-            	
-        		           	
-            }
+      int id1 = 0;
+      while (itr.hasNext()) {
+      	
+          Employee e  = itr.next();
+          if(e.getEmpId()==id) {
+              id1 = id;
+          	itr.remove();
+          	
+      		           	
           }
-        Scanner sc = new Scanner(System.in);
+        }
+      Scanner sc = new Scanner(System.in);
 		System.out.print("Enter modified name-");
 		String name = sc.next();
 		System.out.print("Enter modified age-");
@@ -108,12 +108,12 @@ public class EmployeeService implements Callable<Object>{
 		System.out.print("Enter modified country-");
 		String country = sc.next();
 		Employee e2=new Employee(id1,name,age,dept,desgn,country);
-     	emplist.add(e2);
+   	emplist.add(e2);
 		System.out.println("The required employee details have been updated");
 		empdb.update(id1,e2);	
 		sc.close();
 	}
-	public static void importEmployee(ArrayList<Employee> empList) throws FileNotFoundException {
+	public void importEmployee(ArrayList<Employee> empList) throws FileNotFoundException {
 		Scanner input=null;
 		try { 
 			Employee e2=null;
@@ -138,8 +138,8 @@ public class EmployeeService implements Callable<Object>{
 	}
 	finally {
 		if (input != null) {
-          input.close();
-        }
+        input.close();
+      }
 	}
 	
 	

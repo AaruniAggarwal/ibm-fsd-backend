@@ -29,17 +29,17 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 	    conn.setAutoCommit(true); // enable transaction
 
 		//String str = "INSERT INTO employee (id,name, age,  department,designation, country) VALUES (12,'Anil', 30, 'Admin','Developer', 'India')";
-		String sq = "insert into Employee (empId,name, age,dept,desgn,country) values(?,?,?,?,?,?)";
+		String sq = "insert into Employee (id,name, age,designation,department,country) values(?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sq);
             pstmt.setInt(1,e1.getEmpId());
             pstmt.setString(2,e1.getName());
             pstmt.setInt(3,e1.getAge());
-            pstmt.setString(4,e1.getDept());
-            pstmt.setString(5,e1.getDesgn());
+               pstmt.setString(4,e1.getDesgn());
+            pstmt.setString(5,e1.getDept());
             pstmt.setString(6,e1.getCountry());
         
 		pstmt.executeUpdate();
-		conn.commit();
+		//conn.commit();
 		System.out.println("Added succesfully.");
 		conn.close();
   }
@@ -140,18 +140,19 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 				System.out.print("\t" + rsmeta.getColumnName(i)+"|");
 			}
 			
-System.out.println();
+          System.out.println();
 			
 			while (rs.next()) {
 				// Retrieve by column name
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
+				int age=rs.getInt("age");
 				String designation = rs.getString("designation");
 				String department = rs.getString("department");
 				String country = rs.getString("country");
 
 				// Display values
-				System.out.format("\t%d | \t%s | \t%s | \t%s | \t%s |\n", id, name, designation, department, country);
+				System.out.format("\t%d | \t%s | \t%d | \t%s | \t%s | \t%s |\n", id, name,age, designation, department, country);
 			}
 			
 			pstmt.close();
@@ -171,13 +172,14 @@ System.out.println();
 			System.out.println("Creating statement...");
 			//stmt = conn.createStatement();
 			
-			String query1="update Employee set id=?,name=?,designation=?,department=?,country=? where id=? ";
+			String query1="update Employee set id=?,name=?,age=?,designation=?,department=?,country=? where id=? ";
 			pstmt=conn.prepareStatement(query1);
 			pstmt.setInt(1, e1.getEmpId());
 			pstmt.setString(2,e1.getName());
 			pstmt.setInt(3,e1.getAge());
-			pstmt.setString(4, e1.getDept());
-			pstmt.setString(5, e1.getDesgn());
+			
+			pstmt.setString(4, e1.getDesgn());
+			pstmt.setString(5, e1.getDept());
 			pstmt.setString(6, e1.getCountry());
 			pstmt.setInt(6, id);
 			
